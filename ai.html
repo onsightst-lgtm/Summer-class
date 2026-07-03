@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI를 '내 편'으로 쓰는 아이 · 중1·2 · 6회 커리큘럼</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1:wght@400;500;700;800&family=Jua&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1e3a24; --ink-soft:#4c6b52; --paper:#ffffff;
+  --leaf:#6bb03a; --leaf-bright:#8bc34a;
+  --forest:#2f8a4e; --forest-deep:#123d29;
+  --spring-soft:#eef6df; --spring-soft2:#e3f0cf;
+  --bloom:#ef7a52; --pollen:#f4bd3c; --line:#dcebc9;
+  --shadow:0 10px 30px rgba(18,61,41,.10);
+  --disp:'Do Hyeon',sans-serif; --body:'Gothic A1',sans-serif; --pop:'Jua',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  margin:0; font-family:var(--body); color:var(--ink); line-height:1.7;
+  word-break:keep-all; overflow-wrap:break-word;
+  background:linear-gradient(180deg,#f4fbe9 0%,#e6f3d3 12%,#bcdf93 40%,#66ac5c 68%,#2f8250 88%,#123d29 100%);
+  background-attachment:fixed;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 18px}
+a{color:var(--forest);text-decoration:none;border-bottom:1px solid rgba(47,138,78,.25)}
+a:hover{color:var(--bloom)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:64px 18px 78px;
+  background:linear-gradient(165deg,#8fd05a 0%,#4ea456 55%,#2c7d4c 100%)}
+.hero .eyebrow{font-family:var(--pop);letter-spacing:.5px;color:#f2ffe3;font-size:15px;margin-bottom:10px}
+.hero h1{font-family:var(--disp);font-size:clamp(32px,8vw,58px);line-height:1.14;margin:0 0 16px;
+  text-shadow:0 4px 0 rgba(18,61,41,.22)}
+.hero h1 .pop{color:var(--pollen)}
+.hero .tag{font-size:clamp(15px,3.6vw,19px);color:#f2ffe3;max-width:600px;margin:0 auto;font-weight:500}
+.hero .tag b{color:#fff;border-bottom:2px solid rgba(244,189,60,.7)}
+.hero .chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:26px}
+.chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;
+  padding:8px 15px;border-radius:999px;font-size:14px;font-weight:700;backdrop-filter:blur(3px)}
+
+/* floating leaves (숲·봄 테마) */
+.leaves{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.leaves i{position:absolute;top:-44px;display:block;
+  border-radius:0 100% 0 100%;opacity:.9;
+  box-shadow:inset 1px -1px 0 rgba(255,255,255,.25);
+  animation:fall linear infinite}
+@keyframes fall{
+  0%{transform:translate(0,-44px) rotate(0deg);opacity:0}
+  8%{opacity:.92}
+  50%{transform:translate(28px,46vh) rotate(200deg)}
+  92%{opacity:.92}
+  100%{transform:translate(-16px,108vh) rotate(400deg);opacity:0}
+}
+.leaf-edge{display:block;width:100%;height:44px;margin-top:-1px}
+
+/* ---------- SECTION SHELL ---------- */
+.section{padding:34px 0}
+.eyebrow-d{font-family:var(--pop);color:var(--forest);font-size:14px;letter-spacing:.4px}
+h2.title{font-family:var(--disp);font-size:clamp(23px,5.5vw,34px);margin:4px 0 18px;color:var(--ink)}
+.band{background:var(--paper);border-radius:22px;box-shadow:var(--shadow);padding:26px 22px;margin:20px 0}
+.lead{color:var(--ink-soft);font-size:16px;max-width:720px}
+
+/* ---------- 공감 (WORRIES) ---------- */
+.worries{display:grid;gap:12px;margin:16px 0 0}
+.worry{background:var(--spring-soft);border-radius:16px;padding:14px 18px;
+  font-size:15.5px;font-weight:500;color:#33472f}
+.worry .q{color:var(--forest);font-family:var(--pop);margin-right:4px}
+.worry-close{text-align:center;margin-top:22px;font-family:var(--pop);font-size:clamp(16px,4vw,19px);
+  color:var(--ink);line-height:1.6}
+.worry-close .g{color:var(--forest)}
+
+/* ---------- 핵심 원칙 (COMPASS) ---------- */
+.compass{background:linear-gradient(155deg,#1f6b43,#123d29);color:#eafcef;border-radius:22px;
+  box-shadow:var(--shadow);padding:28px 22px;margin:20px 0}
+.compass h2{font-family:var(--disp);font-size:clamp(21px,5vw,30px);margin:0 0 6px;color:#fff;line-height:1.3}
+.compass .sub{color:#bfe6c9;margin:0 0 20px}
+.roles{display:grid;grid-template-columns:1fr;gap:14px}
+.role{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px 18px}
+.role h3{margin:0 0 10px;font-family:var(--pop);font-size:18px}
+.role.bad h3{color:#e9d7b0} .role.good h3{color:var(--pollen)}
+.role ul{margin:0;padding-left:18px} .role li{margin:5px 0;color:#e7f6ec}
+.pledge{margin-top:18px;text-align:center;font-family:var(--pop);font-size:clamp(15px,3.6vw,18px);
+  color:#fff;background:rgba(244,189,60,.14);border:1px dashed rgba(244,189,60,.6);border-radius:14px;padding:14px}
+@media(min-width:680px){.roles{grid-template-columns:1fr 1fr}}
+
+/* ---------- 3가지 힘 (checklist) ---------- */
+.check{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.check li{background:var(--spring-soft);border-radius:12px;padding:14px 16px 14px 50px;position:relative;font-weight:500}
+.check li b{font-family:var(--pop);color:var(--forest)}
+.check li .fine{color:var(--bloom);font-weight:700;font-size:12.5px}
+.check li::before{content:"🌿";position:absolute;left:14px;top:12px;width:24px;height:24px;line-height:24px;
+  text-align:center;font-size:15px}
+
+/* ---------- OVERVIEW MAP ---------- */
+.map{display:grid;gap:10px;margin-top:10px}
+.map a{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px;color:var(--ink)}
+.map a:hover{border-color:var(--leaf);transform:translateX(2px)}
+.map .n{font-family:var(--disp);font-size:24px;color:var(--bloom);text-align:center;line-height:1}
+.map .t{font-weight:700}
+.map .p{font-size:12.5px;color:var(--ink-soft)}
+.map .ph{font-family:var(--pop);font-size:12px;color:#fff;background:var(--forest);padding:5px 11px;border-radius:999px;white-space:nowrap}
+
+/* ---------- SESSION CARD ---------- */
+.session{background:var(--paper);border-radius:22px;box-shadow:var(--shadow);padding:0;margin:22px 0;overflow:hidden;scroll-margin-top:16px}
+.s-head{padding:20px 22px;background:linear-gradient(120deg,var(--forest),#1f6b43);color:#fff;position:relative}
+.s-stage{font-family:var(--pop);font-size:13px;color:#d6f2c9;letter-spacing:.6px}
+.s-head h3{font-family:var(--disp);font-size:clamp(20px,5vw,28px);margin:2px 0 0;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.s-head .num{color:var(--pollen)}
+.s-tags{margin-top:11px;display:flex;flex-wrap:wrap;gap:6px}
+.s-phase,.s-power{font-family:var(--pop);font-size:12.5px;padding:4px 12px;border-radius:999px}
+.s-phase{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4)}
+.s-power{background:rgba(244,189,60,.22);border:1px solid rgba(244,189,60,.55);font-family:var(--body);font-weight:700;font-size:12px}
+.s-body{padding:20px 22px}
+.goal{background:var(--spring-soft);border-left:5px solid var(--leaf);border-radius:0 12px 12px 0;
+  padding:12px 16px;margin:0 0 18px;font-weight:600}
+.h-sub{font-family:var(--pop);color:var(--forest);font-size:16px;margin:20px 0 8px;display:flex;align-items:center;gap:8px}
+.h-sub::before{content:"";width:10px;height:10px;background:var(--bloom);border-radius:3px;transform:rotate(45deg);flex:none}
+
+/* timetable */
+.tt{display:grid;gap:6px;margin:6px 0}
+.tt-row{display:grid;grid-template-columns:60px 1fr;gap:12px;align-items:start;
+  padding:9px 12px;background:#f4f9ec;border-radius:10px}
+.tt-row .time{font-family:var(--pop);color:var(--forest);font-size:14px}
+.tt-row.rest{background:#fff5e9} .tt-row.rest .time{color:var(--bloom)}
+
+.deliver{margin-top:18px;background:#fff;border:1px dashed var(--forest);border-radius:12px;padding:12px 16px}
+.deliver b{font-family:var(--pop);color:var(--forest)}
+.note-focus{margin-top:12px;background:#f4f9ec;border-radius:12px;padding:12px 16px;font-size:14.5px}
+.note-focus b{color:var(--ink)}
+
+/* 안심 포인트 */
+.grid2{display:grid;gap:16px} @media(min-width:680px){.grid2{grid-template-columns:1fr 1fr}}
+.mini{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.mini h4{font-family:var(--pop);color:var(--forest);margin:0 0 8px;font-size:17px;display:flex;align-items:center;gap:8px}
+.mini p{margin:0;font-size:14px;color:#3a4d36}
+.mini p b{color:var(--ink)}
+
+/* CTA */
+.cta{background:linear-gradient(160deg,#2f8a4e,#1f6b43);color:#fff;text-align:center;border-radius:22px;
+  box-shadow:var(--shadow);padding:34px 22px;margin:22px 0}
+.cta .big{font-family:var(--disp);font-size:clamp(22px,5.2vw,30px);line-height:1.4;margin:0 0 8px}
+.cta .big .y{color:var(--pollen)}
+.cta .soft{font-size:16px;color:#eafcef;margin:12px auto 0;max-width:480px}
+.btn{display:inline-block;margin-top:24px;background:#fff;color:var(--forest);
+  font-family:var(--pop);font-size:18px;padding:15px 42px;border-radius:999px;text-decoration:none;border:none;
+  min-width:300px;text-align:center;
+  box-shadow:0 10px 26px rgba(0,0,0,.22);transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px);color:var(--forest)}
+.cta .finep{margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.72)}
+
+footer{color:#eafcef;text-align:center;padding:34px 18px 54px;font-size:14px}
+footer .big{font-family:var(--disp);font-size:22px;color:#fff;margin-bottom:6px}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:560px){
+  .wrap{padding:0 14px}
+  .section{padding:26px 0}
+  .hero{padding:52px 16px 64px}
+  .hero h1{margin-bottom:14px}
+  .band{padding:20px 16px;border-radius:18px;margin:16px 0}
+  .compass{padding:22px 16px;border-radius:18px;margin:16px 0}
+  .compass h2{font-size:20px}
+  .session{border-radius:18px;margin:18px 0}
+  .s-head{padding:18px 16px}
+  .s-body{padding:18px 16px}
+  .cta{padding:28px 16px;border-radius:18px}
+  .worry{font-size:15px;padding:13px 15px}
+  .tt-row{grid-template-columns:52px 1fr;gap:10px;padding:9px 11px}
+  .chip{font-size:13px;padding:7px 12px}
+  .btn{display:block;width:100%;min-width:0;padding:16px 20px}
+  /* 목차 카드: 번호 + 제목 한 줄, 태그는 아래로 자연스럽게 줄바꿈 */
+  .map a{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:13px 14px}
+  .map .n{flex:0 0 34px;font-size:22px}
+  .map a>span:nth-child(2){flex:1 1 62%;min-width:0}
+  .map .ph{flex:0 0 auto;margin-left:46px}
+}
+
+/* motion / print */
+@media(prefers-reduced-motion:reduce){.leaves{display:none}}
+@media print{
+  body{background:#fff}
+  .hero{color:#1e3a24;padding:24px 0} .hero h1{text-shadow:none} .hero .eyebrow,.hero .tag{color:#3a4d36}
+  .chip{color:#1e3a24;border-color:#bbb;background:#f2f2f2}
+  .compass,.cta{background:#eef6df;color:#1e3a24} .compass h2,.cta .big{color:#1e3a24} .compass .sub{color:#456}
+  .role{background:#fff;border-color:#ccc} .role li{color:#222} .role.good h3,.role.bad h3{color:#1e3a24}
+  .s-head{background:#2f8a4e !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .session,.band,.compass,.cta{box-shadow:none;border:1px solid #ddd}
+  .session{page-break-inside:avoid} .leaves{display:none} footer{color:#333}
+}
+</style>
+
+<style>
+.back-to-main{position:fixed;top:14px;left:14px;z-index:99999;
+  display:inline-flex;align-items:center;gap:6px;
+  background:#ffffff;color:#152B52;text-decoration:none;
+  font-family:'Gothic A1','Pretendard',sans-serif;font-size:14px;font-weight:800;
+  padding:10px 16px;border-radius:999px;border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 6px 20px rgba(0,0,0,.28)}
+.back-to-main:hover{transform:translateY(-1px)}
+.back-bottom-wrap{text-align:center;padding:6px 18px 30px}
+.back-bottom{display:inline-flex;align-items:center;gap:8px;
+  background:#152B52;color:#fff;text-decoration:none;
+  font-family:'Gothic A1','Pretendard',sans-serif;font-size:16px;font-weight:800;
+  padding:14px 30px;border-radius:999px;border:none;
+  box-shadow:0 10px 26px rgba(0,0,0,.22)}
+.back-bottom:hover{transform:translateY(-2px);color:#fff}
+@media(max-width:560px){.back-to-main{top:10px;left:10px;font-size:13px;padding:8px 14px}}
+</style>
+</head>
+<body>
+<a href="index.html#classes" class="back-to-main">← 모집글로 돌아가기</a>
+
+
+<header class="hero">
+  <div class="leaves" id="leaves"></div>
+  <div class="wrap">
+    
+    <h1>AI, 막지 말고<br><span class="pop">'제대로'</span> 가르쳐 주세요</h1>
+    <p class="tag">AI에게 다 시키는 아이가 아니라, <b>자기 생각을 담을 줄 아는 아이</b>로. ‘AI 다루는 힘’을 경험합니다.</p>
+    <div class="chips">
+      <span class="chip">6회 · 회당 2시간</span>
+      <span class="chip">주 2회 · 3주</span>
+      <span class="chip">중1·2</span>
+      
+      
+    </div>
+  </div>
+</header>
+<svg class="leaf-edge" viewBox="0 0 1440 44" preserveAspectRatio="none"><path fill="#f4fbe9" d="M0,22 C180,44 360,6 540,20 C720,34 900,2 1080,18 C1260,34 1350,10 1440,22 L1440,44 L0,44 Z"/></svg>
+
+<main class="wrap">
+
+  <!-- ===== 공감 (WORRIES) ===== -->
+  <section class="section">
+    <div class="band">
+      <div class="eyebrow-d">먼저, 마음부터</div>
+      <h2 class="title">혹시, 이런 걱정 하고 계셨나요?</h2>
+      <div class="worries">
+        <div class="worry"><span class="q">“</span>AI가 과제를 대신 해준다는데, 아이 실력이 늘지 걱정이에요.</div>
+        <div class="worry"><span class="q">“</span>스스로 생각하는 힘이 오히려 약해지는 건 아닐까요?</div>
+        <div class="worry"><span class="q">“</span>이름·학교 같은 개인정보를 막 입력하면 어떻게 하죠?</div>
+        <div class="worry"><span class="q">“</span>수행평가에도 AI 쓴다던데, 정확한 기준은 알고 쓰는 걸까?</div>
+      </div>
+      <p class="worry-close">충분히 걱정되실 만한 부분이에요.<br><span class="g">같이 고민하면 길이 보입니다.</span></p>
+    </div>
+  </section>
+
+  <!-- ===== 핵심 원칙 (COMPASS) ===== -->
+  <section class="section" id="core">
+    <div class="compass">
+      <div class="eyebrow-d" style="color:var(--pollen)">이 수업의 나침반</div>
+      <h2>그냥 다 맡기면 ‘AI 작품’, 내 생각을 넣으면 ‘내 작품’</h2>
+      <p class="sub"></p>
+      <div class="roles">
+        <div class="role bad">
+          <h3>🤖 그냥 다 맡기면 = AI 작품</h3>
+          <ul>
+            <li>“보고서 써 줘” 하고 그대로 입력</li>
+            <li>내 생각·내 경험이 0개</li>
+            <li>AI 말이 맞는지 확인하지 않음</li>
+            <li>어디서 가져온 내용인지 모름</li>
+          </ul>
+        </div>
+        <div class="role good">
+          <h3>🙋 내 생각을 넣으면 = 내 작품</h3>
+          <ul>
+            <li>내 생각·경험을 넣어서 입력</li>
+            <li>AI 답을 “이거 맞아?” 하고 확인</li>
+            <li>AI를 언제·어떻게 썼는지 밝힘</li>
+            <li>마지막 결정은 언제나 내가</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pledge">“AI는 답을 줄 수 있지만, 무엇이 옳은지·무엇을 담을지는 오직 내가 정한다.”</div>
+    </div>
+  </section>
+
+  <!-- ===== 갖게 될 힘 ===== -->
+  <section class="section">
+    <div class="band">
+      <div class="eyebrow-d">AI 시대에</div>
+      <h2 class="title">필요한 5가지 역량</h2>
+      <p class="lead">AI를 못 쓰게 막는 게 아니라, 이 다섯 가지 힘을 길러 <b>스스로 잘 쓸 수 있도록</b> 돕습니다. </p>
+      <ul class="check">
+        <li><b>① AI 원리를 아는 힘</b> — AI가 '정답'을 주는 것이 아니라 다음 말을 '예측'하는 기술인 것을 이해합니다.</li>
+        <li><b>② 의심하고 검증하는 힘</b> — AI도 틀릴 수 있다는 점을 알고, "진짜 맞을까?" 의심해 보며 스스로 확인하는 습관을 기른다.</li>
+        <li><b>③ 좋은 질문을 만드는 힘</b> — 막연하게 '써 줘'라고 하는 대신, 조건과 역할(페르소나)을 담아 원하는 결과를 이끌어내는 <b>프롬프트</b>를 작성한다.</li>
+        <li><b>④ AI로 스스로 배우는 힘</b> — 단순하게 답을 베끼지 않고 AI에게 힌트를 요청하며 스스로  ‘이해'하는 공부법을 연습한다.</li>
+        <li><b>⑤ 정직하게 쓰는 힘</b> — AI를 언제, 어떻게 썼는지 솔직하게 밝히고, 이름이나 학교 같은 개인정보는 절대 넣지 않는다. <span class="fine"></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 6회 한눈에 ===== -->
+  <section class="section">
+    <div class="band">
+      <div class="eyebrow-d">3주 6회</div>
+      <h2 class="title">커리큘럼 한눈에 보기</h2>
+      <p class="lead">AI 이해부터 관심사 탐구와 수행평가 활용까지 함께 합니다. 처음에는 방향을 짚어주고(티칭), 스스로 해내도록 도우며(퍼실리테이션) 아이의 성장을 지원합니다. </b>.</p>
+      <div class="map">
+        <a href="#s1"><span class="n">1</span><span><span class="t">AI, 너 도대체 뭐야?</span><br><span class="p">AI가 무엇인지 알아보고, '나의 AI 사용 습관'을 진단한다</span></span><span class="ph">진단·기초</span></a>
+        <a href="#s2"><span class="n">2</span><span><span class="t">AI의 정체 파헤치기</span><br><span class="p">AI의 할루시네이션·편향을 직접 확인해 검증하는 방법을 알아본다</span></span><span class="ph">검증·비판</span></a>
+        <a href="#s3"><span class="n">3</span><span><span class="t">AI에게 제대로 시키기</span><br><span class="p">프롬프트의 요소를 알아보고 설계한다</span></span><span class="ph">질문 설계</span></a>
+        <a href="#s4"><span class="n">4</span><span><span class="t">규칙을 알고 당당하게 📋</span><br><span class="p">수행평가에서 AI를 잘 쓰는 방법을 연습한다</span></span><span class="ph">수행평가</span></a>
+        <a href="#s5"><span class="n">5</span><span><span class="t">나의 관심사를 AI와 탐험하기</span><br><span class="p">관심 주제를 탐구 질문으로 좁혀 파고든다</span></span><span class="ph">관심사 탐구</span></a>
+        <a href="#s6"><span class="n">6</span><span><span class="t">AI로 공부하기</span><br><span class="p">답을 베끼지 않고 ‘이해'하는 학습법을 찾아본다</span></span><span class="ph">학습 도구</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SESSION 1 ================= -->
+  <section class="session" id="s1">
+    <div class="s-head">
+      <div class="s-stage">STEP 01 · 기초 다지기</div>
+      <h3><span class="num">1회차</span> AI, 너 도대체 뭐야?</h3>
+      <div class="s-tags"><span class="s-phase">티칭</span><span class="s-power">기르는 힘 ① AI 원리·한계</span></div>
+    </div>
+    <div class="s-body">
+      <p class="goal">🎯 AI가 무엇인지 알아보고, ‘나의 AI 사용 습관’을 진단한다.</p>
+      <div class="h-sub">2시간 흐름</div>
+      <div class="tt">
+        <div class="tt-row"><span class="time">15분</span><span>인사 · 과정 소개 / 나의 AI 사용습관 진단하기 <b></b></span></div>
+        <div class="tt-row"><span class="time">25분</span><span><b>‘이것도 AI일까?’ </b> - 카드로 분류해보기</b> </span></div>
+        <div class="tt-row"><span class="time">20분</span><span>AI 이해하기</span></div>
+        <div class="tt-row rest"><span class="time">10분</span><span>쉬는 시간</span></div>
+        <div class="tt-row"><span class="time">30분</span><span><b>생성형 AI 체험 </b>- 다음 문장 예측해보기</b> </span></div>
+        <div class="tt-row"><span class="time">20분</span><span>마무리 · 개인정보 규칙 안내</span></div>
+     
+        
+      <div class="deliver"><b>오늘의 Output</b> — 나의 AI 사용 자기점검표</div>
+    </div>
+  </section>
+
+  <!-- ================= SESSION 2 ================= -->
+  <section class="session" id="s2">
+    <div class="s-head">
+      <div class="s-stage">STEP 02 · 기초 다지기</div>
+      <h3><span class="num">2회차</span> AI의 정체 파헤치기</h3>
+      <div class="s-tags"><span class="s-phase">티칭 → 실습</span><span class="s-power">기르는 힘 ② 의심·검증</span></div>
+    </div>
+    <div class="s-body">
+      <p class="goal">🎯 AI의 할루시네이션·편향을 직접 확인해 검증하는 방법을 알아본다. </p>
+      <div class="h-sub">2시간 흐름</div>
+      <div class="tt">
+        <div class="tt-row"><span class="time">15분</span><span>Intro — “AI는 정말 <b>알고</b> 답하는 걸까?”</span></div>
+        <div class="tt-row"><span class="time">30분</span><span><b>AI의 정체성</b> - AI는 학습한 그럴듯한 말을 만든다</span></div>
+        <div class="tt-row rest"><span class="time">10분</span><span>쉬는 시간</span></div>
+        <div class="tt-row"><span class="time">25분</span><span><b>할루시네이션 찾기</b> - AI가 지어내는 장면을 찾는다 </span></div>
+        <div class="tt-row"><span class="time">25분</span><span><b>편향 확인 + 팩트체크 3단계</b> </span></div>
+        <div class="tt-row"><span class="time">15분</span><span>나만의 검증 체크리스트 만들기 · 정리</span></div>
+      </div>
+      
+      <div class="deliver"><b>오늘의 Output</b> — AI 답변 검증 체크리스트</div>
+    </div>
+  </section>
+
+  <!-- ================= SESSION 3 ================= -->
+  <section class="session" id="s3">
+    <div class="s-head">
+      <div class="s-stage">STEP 03 · 스킬 다지기</div>
+      <h3><span class="num">3회차</span> AI에게 제대로 시키기</h3>
+      <div class="s-tags"><span class="s-phase">티칭 + 실습</span><span class="s-power">기르는 힘 ③ 질문 설계</span></div>
+    </div>
+    <div class="s-body">
+      <p class="goal">🎯 좋은 프롬프트의 다섯 가지 요소를 알아보고, 나를 돕는 ‘학습 페르소나’를 직접 설계한다.</p>
+      <div class="h-sub">2시간 흐름</div>
+      <div class="tt">
+        <div class="tt-row"><span class="time">15분</span><span>나쁜 질문 vs 좋은 질문</span></div>
+        <div class="tt-row"><span class="time">30분</span><span><b>프롬프트 작성 </b> - 프롬프트를 잘 쓰는 연습을 해본다</span></div>
+        <div class="tt-row rest"><span class="time">10분</span><span>쉬는 시간</span></div>
+        <div class="tt-row"><span class="time">35분</span><span><b>페르소나 이해</b> - 페르소나 유형에 따라 달라지는 답변을 알아본다  </span></div>
+        <div class="tt-row"><span class="time">20분</span><span>나의 AI 도우미 카드 완성 ·  테스트</span></div>
+        <div class="tt-row"><span class="time">10분</span><span>정리</span></div>
+      </div>
+    
+      <div class="deliver"><b>오늘의 Output</b> — 나의 AI 도우미 카드</div>
+    </div>
+  </section>
+
+  <!-- ================= SESSION 4 ================= -->
+  <section class="session" id="s4">
+    <div class="s-head">
+      <div class="s-stage">STEP 04 · 수행평가·정직 활용 📋</div>
+      <h3><span class="num">4회차</span> 규칙을 알고 당당하게</h3>
+      <div class="s-tags"><span class="s-phase">티칭 + 퍼실리테이션</span><span class="s-power">기르는 힘 ⑤ 정직·안전</span></div>
+    </div>
+    <div class="s-body">
+      <p class="goal">🎯 수행평가에서 AI를 잘 쓰는 방법을 연습한다.</p>
+      <div class="h-sub">2시간 흐름</div>
+      <div class="tt">
+        <div class="tt-row"><span class="time">15분</span><span> <b></b>Intro — “수행평가에 AI 써도 될까?”</span></div>
+        <div class="tt-row"><span class="time">30분</span><span><b>수행평가 활용</b> - 교육부 지침을 이해하고 잘 활용하는 방법을 알아본다 </span></div>
+        <div class="tt-row rest"><span class="time">10분</span><span>쉬는 시간</span></div>
+        <div class="tt-row"><span class="time">35분</span><span><b>모의 과제</b>로 표기 연습하기 </b>   </span></div>
+        <div class="tt-row"><span class="time">20분</span><span>결과물 나눔(show &amp; tell) · 클래스  리마인드 </span></div>
+        <div class="tt-row"><span class="time">10분</span><span>마무리 </span></div>
+      </div>
+      
+      <div class="deliver"><b>오늘의 Output</b> — 나의 AI활용 표기 카드</div>
+    </div>
+  </section>
+
+  <!-- ================= SESSION 5 ================= -->
+  <section class="session" id="s5">
+    <div class="s-head">
+      <div class="s-stage">STEP 05 · 관심사 탐구</div>
+      <h3><span class="num">5회차</span> 나의 관심사를 AI와 탐험하기</h3>
+      <div class="s-tags"><span class="s-phase">퍼실리테이션</span><span class="s-power">기르는 힘 ②③④ 종합</span></div>
+    </div>
+    <div class="s-body">
+      <p class="goal">🎯 내 관심사를 ‘탐구 질문’으로 좁히고, 검증·프롬프트·페르소나를 이용해 리포트의 뼈대를 만든다.</p>
+      <div class="h-sub">2시간 흐름</div>
+      <div class="tt">
+        <div class="tt-row"><span class="time">15분</span><span><b>관심사 마인드맵</b> - 좋아하는 것, 잘하는 것, 궁금한 것을 찾아본다  </span></div>
+        <div class="tt-row"><span class="time">25분</span><span><b>탐구 질문 만들기</b> - 구체적으로 질문을 확장시킨다</span></div>
+        <div class="tt-row rest"><span class="time">10분</span><span>쉬는 시간</span></div>
+        <div class="tt-row"><span class="time">40분</span><span><b>AI와 탐색</b> - 페르소나, 교차검증을 활용해 생각을 주도적으로 정리한다. </span></div>
+        <div class="tt-row"><span class="time">20분</span><span>관심사 탐색 리포트 초안 구성</span></div>
+        <div class="tt-row"><span class="time">10분</span><span>마무리</span></div>
+      </div>
+      
+      <div class="deliver"><b>오늘의 Output</b> — 나의 관심사 AI 탐색 리포트 초안</div>
+    </div>
+  </section>
+
+  <!-- ================= SESSION 6 ================= -->
+  <section class="session" id="s6">
+    <div class="s-head">
+      <div class="s-stage">STEP 06 · 스킬 다지기</div>
+      <h3><span class="num">6회차</span> AI로 공부하기</h3>
+      <div class="s-tags"><span class="s-phase">티칭 → 실습</span><span class="s-power">기르는 힘 ④ 주도적 학습</span></div>
+    </div>
+    <div class="s-body">
+      <p class="goal">🎯 ‘베끼기’와 ‘배우기’의 차이를 알고, 질문 프롬프트를 활용해 문제를 스스로 해결한다.</p>
+      <div class="h-sub">2시간 흐름</div>
+      <div class="tt">
+        <div class="tt-row"><span class="time">10분</span><span>Intro — 답을 ‘받는 것’ vs ‘배우는 것’</span></div>
+        <div class="tt-row"><span class="time">30분</span><span><b>AI 학습 방법 팁!</b> - 각 방법을 프롬프트 템플릿으로 정리한다 </span></div>
+        <div class="tt-row rest"><span class="time">10분</span><span>쉬는 시간</span></div>
+        <div class="tt-row"><span class="time">40분</span><span><b>AI로 문제 풀이 </b> - 실제 교과 문제를 AI와 함께 풀이 과정을 이해하며 해결한다 <b></b></span></div>
+        <div class="tt-row"><span class="time">20분</span><span>프롬프트 정리</span></div>
+        <div class="tt-row"><span class="time">10분</span><span>수료</span></div>
+      </div>
+     
+      <div class="deliver"><b>Output</b> — 포트폴리오 3종</div>
+    </div>
+  </section>
+
+  
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 안심 포인트 ===== -->
+ 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section">
+    <div class="cta">
+      <p class="big">AI를 두려워하는 아이가 아니라,<br><span class="y">AI를 다룰 줄 아는 아이</span>로.</p>
+      <p class="soft">거창한 준비는 없어도 괜찮아요. 우리 아이도 한 번, 가볍게 시작해 볼까요?</p>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeiwXXnjkF_XMV05Oi8b4h5a_OGrB_2WPkVKBxCjHeyJxczWQ/viewform?usp=header" target="_blank" rel="noopener">우리 아이 시작해보기 →</a>
+      <br>
+      <a class="btn" href="https://pf.kakao.com/_hxhxaPX" target="_blank" rel="noopener" style="margin-top:14px">문의하기 →</a>
+      <p class="finep">궁금하신 점은 편하게 문의해 주세요.</p>
+    </div>
+  </section>
+
+</main>
+
+
+<div class="back-bottom-wrap"><a href="index.html#classes" class="back-bottom">← 모집글로 돌아가기</a></div>
+<footer>
+  <div class="big">AI를 '내 편'으로 쓰는 아이</div>
+  
+</footer>
+
+<script>
+// 상단 나뭇잎 (동작 최소화 · reduced-motion이면 생성 안 함)
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const box=document.getElementById('leaves'); if(!box) return;
+  const cols=[
+    'linear-gradient(135deg,#c7e79a,#6fb23f)',
+    'linear-gradient(135deg,#a6d76a,#3f9142)',
+    'linear-gradient(135deg,#e6f0a8,#8bc34a)',
+    'linear-gradient(135deg,#9bd36e,#2f8a4e)'
+  ];
+  const n = window.innerWidth < 560 ? 11 : 16;
+  for(let i=0;i<n;i++){
+    const b=document.createElement('i');
+    const s=10+Math.random()*16;
+    b.style.width=s+'px';
+    b.style.height=(s*1.15)+'px';
+    b.style.left=(Math.random()*100)+'%';
+    b.style.background=cols[i%cols.length];
+    b.style.animationDuration=(9+Math.random()*8)+'s';
+    b.style.animationDelay=(-Math.random()*12)+'s';
+    box.appendChild(b);
+  }
+})();
+</script>
+
+</body>
+</html>
